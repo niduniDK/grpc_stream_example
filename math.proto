@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+//Can't use a Protobuf primitive as the parameter or return value of a gRPC procedure.
+//So using wrappers here.
+import "google/protobuf/wrappers.proto";
+
+//Protobuf message definition. Each field has type, name and field number
+message MathRequest {
+    int32 value1 = 1;
+    int32 value2 = 2;
+}
+
+service Calculator {
+
+    //Simple RPC - Multiplies given two values
+    rpc multiply(MathRequest) returns (google.protobuf.Int32Value); 
+
+    //Client Streaming - Sums the given array of values
+    rpc sum(stream google.protobuf.Int32Value) returns (google.protobuf.Int32Value);
+
+    //Server Streaming - Returns the odd numbers between the given two numbers
+    rpc odd(MathRequest) returns (stream google.protobuf.Int32Value);
+
+    //Bi-Directional Streaming - When client sends values, returns the current max number
+    rpc max(stream google.protobuf.Int32Value) returns (stream google.protobuf.Int32Value);
+}

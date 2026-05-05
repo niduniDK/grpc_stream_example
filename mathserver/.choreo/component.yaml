@@ -37,6 +37,7 @@ endpoints:
     # +optional Network level visibilities of the endpoint.
     # Accepted values: Project|Organization|Public(Default).
     networkVisibilities:
+      - Project
       - Public
     # +optional The path to the schema definition file.
     # Defaults to wildcard route if not specified.

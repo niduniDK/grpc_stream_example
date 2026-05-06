@@ -1,11 +1,10 @@
 import ballerina/http;
 
-listener http:Listener probeEP = check new (7040);
-
-service / on probeEP {
-    resource function get healthz() returns string {
-        string message = string `Hello from ${7040}"}`;
-        return message;
+service /probes on new http:Listener(7040) {
+    resource function get healthz() returns boolean {
+        return true;
     }
-
+    resource function get readyz() returns boolean {
+        return true;
+    }
 }

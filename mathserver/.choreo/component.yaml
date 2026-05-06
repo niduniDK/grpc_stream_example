@@ -46,7 +46,7 @@ endpoints:
 
   - name: bal_http
     # +optional Display name for the endpoint.
-    displayName: Ballerina Math Server
+    displayName: Ballerina Hello
     # +required Service section has the user service endpoint details
     service:
       # +optional Base path of the API that gets exposed via the endpoint.
